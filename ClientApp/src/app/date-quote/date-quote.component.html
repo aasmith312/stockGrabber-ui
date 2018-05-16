@@ -1,0 +1,33 @@
+<h1>Daily Quotes</h1>
+
+<p>This component demonstrates fetching data from the API.</p>
+
+<!--<p *ngIf="data"> -->
+  <p>{{data}}</p>
+  <p>{{hasData}}</p>
+<!--</p>-->
+
+<p *ngIf="!quotes"><em>Loading...</em></p>
+
+<table class='table' *ngIf="quotes">
+  <thead>
+    <tr>
+      <th>Close Price</th>
+      <th>Open Price</th>
+      <th>High Price</th>
+      <th>Low Price</th>
+      <th>Date</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let quote of quotes">
+      <td>{{ quote.closePrice }}</td>
+      <td>{{ quote.openPrice }}</td>
+      <td>{{ quote.highPrice }}</td>
+      <td>{{ quote.lowPrice }}</td>
+      <td>{{ quote.date }}</td>
+      <td>{{ quote.volume }}</td>
+    </tr>
+  </tbody>
+</table>
