@@ -8,27 +8,46 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DateQuoteComponent implements OnInit {
   public quotes: DateQuote[];
-  public data: Object[];
-  public hasData: Boolean;
+  public ticker: string;
+  public client: HttpClient;
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Object[]>('http://localhost:5001/api/SystemQuoteGrabberIntervalDate/').subscribe(result => {
-      this.data = result;
-    }, error => console.error(error));
-    if (this.data && this.data.length > 0) {
-      this.hasData = true;
-    }
+    //this.client = http;
   }
 
   ngOnInit() {
+  }
+
+  keyDownFunction(event){
+    if(this.ticker && event.key == "Enter"){
+      alert(this.ticker);
+     /* this.client.get<DateQuote[]>('http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/'+this.ticker.toUpperCase()).subscribe(
+      result => {
+        this.handleData(result);
+      }, error => console.error(error));*/
+    }
+  }
+
+
+  handleData(data){
+    this.quotes = data;
   }
 }
 
 
 interface DateQuote {
-    closePrice: number;
-    openPrice: number;
-    highPrice: number;
-    lowPrice: number;
-    date: string;
+    close: number;
+    dateStamp: string;
+    high: number;
+    low: number;
+    metaData: MetaData;
+    open: number;
     volume: number;
+}
+
+
+interface MetaData{
+    info: string;
+    lastRefresh: string;
+    symbol: string;
+    timeZone: string;
 }
