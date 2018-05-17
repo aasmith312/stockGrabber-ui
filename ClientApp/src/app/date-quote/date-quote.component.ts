@@ -4,35 +4,35 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-date-quote',
   templateUrl: './date-quote.component.html',
-  styleUrls: ['./date-quote.component.css']
+  styleUrls: ['./date-quote.component.css'],
 })
 export class DateQuoteComponent implements OnInit {
   public quotes: DateQuote[];
   public ticker: string;
   public client: HttpClient;
+  public initSearch: Boolean;
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    //this.client = http;
+     this.client = http;
   }
 
   ngOnInit() {
   }
 
-  keyDownFunction(event){
-    if(this.ticker && event.key == "Enter"){
-      alert(this.ticker);
-     /* this.client.get<DateQuote[]>('http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/'+this.ticker.toUpperCase()).subscribe(
-      result => {
-        this.handleData(result);
-      }, error => console.error(error));*/
+  keyDownFunction(event: KeyboardEvent) {
+    if (this.ticker && event.key === 'Enter') {
+      this.initSearch = true;
+      const tmpURI = 'http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/';
+      this.client.get<DateQuote[]>(tmpURI + this.ticker.toUpperCase()).subscribe(
+        result => {
+          this.handleData(result);
+          this.initSearch = false;
+        }, error => console.error(error));
     }
   }
-
-
-  handleData(data){
+  handleData(data) {
     this.quotes = data;
   }
 }
-
 
 interface DateQuote {
     close: number;
@@ -44,8 +44,7 @@ interface DateQuote {
     volume: number;
 }
 
-
-interface MetaData{
+interface MetaData {
     info: string;
     lastRefresh: string;
     symbol: string;

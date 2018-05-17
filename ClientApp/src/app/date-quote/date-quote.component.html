@@ -1,16 +1,11 @@
 <h1>Daily Quotes</h1>
 
 <p>This component demonstrates fetching data from the API.</p>
-<!--<p (keydown)="keyDownFunction($event)">
-
-</p>-->
-<p><input type="text" ng-model="ticker"></p>
-
-<!--<p *ngIf="data"> -->
-  <p>{{ticker}}</p>
-<!--</p>-->
-
-<!-- <p *ngIf="!quotes"><em>Loading...</em></p> -->
+<p (keydown)="keyDownFunction($event)">
+  <input type="text" class="form-control" id="ticker" 
+  name="ticker" [(ngModel)]="ticker">
+</p>
+<p *ngIf="initSearch"><em>Loading...</em></p>
 
 <table class='table' *ngIf="quotes">
   <thead>
@@ -25,6 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let quote of quotes">
+      <td>{{ quote.metaData.symbol }}</td>
       <td>{{ quote.close }}</td>
       <td>{{ quote.open }}</td>
       <td>{{ quote.high }}</td>
