@@ -11,6 +11,8 @@ export class DateQuoteComponent implements OnInit {
   public ticker: string;
   public client: HttpClient;
   public initSearch: Boolean;
+  public fullURI: string;
+  public uri: string = 'http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/';
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
      this.client = http;
   }
@@ -21,8 +23,8 @@ export class DateQuoteComponent implements OnInit {
   keyDownFunction(event: KeyboardEvent) {
     if (this.ticker && event.key === 'Enter') {
       this.initSearch = true;
-      const tmpURI = 'http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/';
-      this.client.get<DateQuote[]>(tmpURI + this.ticker.toUpperCase()).subscribe(
+      this.fullURI = this.uri+this.ticker.toUpperCase();
+      this.client.get<DateQuote[]>(this.fullURI).subscribe(
         result => {
           this.handleData(result);
           this.initSearch = false;

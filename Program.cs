@@ -26,9 +26,10 @@ namespace stockGrabber_ui_0
 
 
             var tmp = WebHost.CreateDefaultBuilder(args)
-               // .UseConfiguration(nonDefaultBuilder)
-                .UseStartup<Startup>()
-                ;
+              .UseKestrel()
+              .UseContentRoot(Directory.GetCurrentDirectory())
+              .UseIISIntegration()
+              .UseStartup<Startup>();
 
                 return tmp;
         }

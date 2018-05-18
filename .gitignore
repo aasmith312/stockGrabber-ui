@@ -8,7 +8,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.zip
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -25,7 +25,7 @@ bin/
 Bin/
 obj/
 Obj/
-
+site/
 # Visual Studio 2015 cache/options directory
 .vs/
 

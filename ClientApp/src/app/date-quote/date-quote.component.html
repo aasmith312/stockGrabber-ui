@@ -6,10 +6,10 @@
   name="ticker" [(ngModel)]="ticker">
 </p>
 <p *ngIf="initSearch"><em>Loading...</em></p>
-
 <table class='table' *ngIf="quotes">
   <thead>
     <tr>
+      <th>Symbol</th>
       <th>Close Price</th>
       <th>Open Price</th>
       <th>High Price</th>
