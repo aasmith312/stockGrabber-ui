@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +31,8 @@ import { DateQuoteComponent } from './date-quote/date-quote.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'date-quote', component: DateQuoteComponent },
-    ])
+    ]),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

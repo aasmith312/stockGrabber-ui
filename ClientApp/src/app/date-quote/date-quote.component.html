@@ -2,10 +2,15 @@
 
 <p>This component demonstrates fetching data from the API.</p>
 <p (keydown)="keyDownFunction($event)">
-  <input type="text" class="form-control" id="ticker" 
-  name="ticker" [(ngModel)]="ticker">
+  <input type="text" class="form-control" id="ticker" name="ticker" [(ngModel)]="ticker">
 </p>
-<p *ngIf="initSearch"><em>Loading...</em></p>
+<div style="display: block;" *ngIf="quotes">
+  <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+    [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+</div>
+<p *ngIf="initSearch">
+  <em>Loading...</em>
+</p>
 <table class='table' *ngIf="quotes">
   <thead>
     <tr>
