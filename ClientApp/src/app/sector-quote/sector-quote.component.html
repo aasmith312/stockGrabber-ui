@@ -1,0 +1,23 @@
+<div *ngIf="!realTimePerformanceLineChartData">
+  <p>
+    Loading..
+  </p>
+</div>
+
+<div style="display: block;" *ngIf="realTimePerformanceLineChartData">
+  <canvas baseChart [datasets]="realTimePerformanceLineChartData" [labels]="realTimePerformanceLineChartLabels" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <br/>
+</div>
+
+<div style="display: block;" *ngIf="oneDayPerformanceLineChartData">
+  <canvas baseChart [datasets]="oneDayPerformanceLineChartData" [labels]="oneDayPerformanceLineChartLabels" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <br/>
+</div>
+
+<div style="display: block;" *ngIf="fiveDayPerformanceLineChartData">
+  <canvas baseChart [datasets]="fiveDayPerformanceLineChartData" [labels]="fiveDayPerformanceLineChartLabels" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <br/>
+</div>

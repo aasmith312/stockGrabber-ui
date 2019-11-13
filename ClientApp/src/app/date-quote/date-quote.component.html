@@ -5,7 +5,7 @@
   <input type="text" class="form-control" id="ticker" name="ticker" [(ngModel)]="ticker">
 </p>
 <div style="display: block;" *ngIf="quotes">
-  <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+  <canvas baseChart width="400" height="250" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
     [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
 </div>
 <p *ngIf="initSearch">

@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DateQuoteComponent } from './date-quote/date-quote.component';
+import { SectorQuoteComponent } from './sector-quote/sector-quote.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DateQuoteComponent } from './date-quote/date-quote.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DateQuoteComponent
+    DateQuoteComponent,
+    SectorQuoteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +33,7 @@ import { DateQuoteComponent } from './date-quote/date-quote.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'date-quote', component: DateQuoteComponent },
+      { path: 'sector-quote', component: SectorQuoteComponent },
     ]),
     ChartsModule
   ],

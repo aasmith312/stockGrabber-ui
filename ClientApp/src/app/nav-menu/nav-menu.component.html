@@ -32,6 +32,11 @@
                         <span class='glyphicon glyphicon-th-list'></span> Quotes by Date
                     </a>
                 </li>
+                <li [routerLinkActive]='["link-active"]'>
+                    <a [routerLink]='["/sector-quote"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-th-list'></span> Performance by Sector
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
