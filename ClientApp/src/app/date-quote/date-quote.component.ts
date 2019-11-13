@@ -14,7 +14,7 @@ export class DateQuoteComponent implements OnInit {
   public client: HttpClient;
   public initSearch: Boolean;
   public fullURI: string;
-  public uri: string = 'http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SystemQuoteGrabberIntervalDate/';
+  public uri: string = 'http://localhost:8000/api/SystemQuoteGrabberIntervalDate/';
   
   public lineChartData:Array<any> = [
     {data: [], label: ""},
@@ -26,7 +26,7 @@ export class DateQuoteComponent implements OnInit {
     responsive: true
   };
   public lineChartColors:Array<any> = [
-    { // grey
+    { // greyng generate component 
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -69,6 +69,8 @@ export class DateQuoteComponent implements OnInit {
     this.lineChartData[0] = {data: [], label: ""};
     this.lineChartData[1] = {data: [], label: ""};
     this.lineChartLabels = [];
+
+    this.quotes.sort((one, two) => (one.dateStamp < two.dateStamp ? -1 : 1));
 
     for(let quote of this.quotes){
       this.lineChartData[0].data.push(quote.close)

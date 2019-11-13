@@ -18,7 +18,7 @@ export class SectorQuoteComponent implements OnInit {
   public data: SectorData;
   public client: HttpClient;
   public fullURI: string;
-  public uri: string = 'http://demostockgrabberapi-dev.us-east-2.elasticbeanstalk.com/api/SectorPerformance/';
+  public uri: string = 'http://localhost:8000/api/SectorPerformance/';
 
   public realTimePerformanceLineChartData: Array<any> = null;
   public realTimePerformanceLineChartLabels: string[] = null;
